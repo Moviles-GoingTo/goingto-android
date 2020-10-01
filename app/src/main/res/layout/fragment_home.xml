@@ -5,7 +5,95 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingHorizontal="20dp"
+    android:paddingTop="20dp"
+    tools:context=".ui.home.HomeFragment"
     style="@style/HomeStyle">
 
+    <TextView
+        android:id="@+id/welcome_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="¡ Bienvenido Marc !"
+        android:textSize="24sp"
+        android:textColor="@color/colorAccent"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/custom_search_bar"
+        app:layout_constraintTop_toBottomOf="@id/welcome_textview"
+        app:layout_constraintRight_toLeftOf="@id/filter_places_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="0dp"
+        android:layout_marginVertical="8dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/search_bar"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/icon_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_search_24"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintLeft_toRightOf="@id/icon_search"
+            app:layout_constraintRight_toRightOf="parent"
+            android:hint="Buscar lugar"
+            android:layout_marginStart="8dp"
+            android:background="@android:color/transparent"
+            android:textColorHint="@color/colorAccent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/filter_places_button"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.15"
+        android:scaleType="centerCrop"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_filter_list_24"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="8dp"
+        android:paddingVertical="8dp"
+        android:paddingHorizontal="12dp"
+        app:layout_constraintTop_toBottomOf="@id/welcome_textview"
+     />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/unknow_places_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"
+        tools:listitem="@layout/prototype_unknow_place"
+        android:layout_marginVertical="8dp"
+        app:layout_constraintTop_toBottomOf="@id/custom_search_bar"/>
+
+    <TextView
+        android:id="@+id/second_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="12dp"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/unknow_places_recyclerview"
+        android:text="Mejor Valorados"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/best_places_recyclerview"
+        android:layout_width="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/second_title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/prototype_best_rate_place"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.challenges.ChallengesFragment">
-
+<!--
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/challengs_toolbar"
         android:layout_width="match_parent"
@@ -17,6 +17,6 @@
             android:layout_height="wrap_content"
             style="@style/titleToolbar"
             android:text="¡ Los Retos de Hoy !"/>
-    </androidx.appcompat.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
