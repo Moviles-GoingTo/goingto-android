@@ -38,5 +38,6 @@ class ChallengAdapterRecyclerView(val challenges: List<Challeng>, val context: C
         holder.tvDescription.text = challeng.description;
         holder.tvNameChallenge.text = challeng.name;
         holder.tvPoints.text = challeng.points.toString();
+
     }
 }
