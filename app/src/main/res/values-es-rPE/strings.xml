@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Going To</string>
+    <string name="title_activity_main">Going To</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_points">Puntos</string>
+    <string name="title_profile">Mi Perfil</string>
+    <string name="title_challenges">Retos</string>
+    <string name="title_place_detail">Detalle del lugar</string>
+
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
+    <string name="fondo">fondo</string>
+</resources>

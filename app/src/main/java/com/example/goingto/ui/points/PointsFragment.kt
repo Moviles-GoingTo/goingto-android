@@ -6,7 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.goingto.R
+import com.example.goingto.adapter.BenefitAdapterRecyclerView
+import com.example.goingto.model.Benefit
+import kotlinx.android.synthetic.main.points_fragment.*
 
 class PointsFragment : Fragment() {
 
@@ -15,6 +20,7 @@ class PointsFragment : Fragment() {
     }
 
     private lateinit var viewModel: PointsViewModel
+    private lateinit var benefitRecyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +32,20 @@ class PointsFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(PointsViewModel::class.java)
+        benefitRecyclerView = rvBenefits
+        loadBenefits(this)
         // TODO: Use the ViewModel
+    }
+
+    private fun loadBenefits(pointsFragment: PointsFragment) {
+        val benefits = ArrayList<Benefit>();
+        benefits.add(Benefit("https://i0.wp.com/exitosanoticias.pe/v1/wp-content/uploads/2020/04/restaurantes-1.png", "Casa Portuguesa Prata", "Peru", 1200.00, 5.0));
+        benefits.add(Benefit("https://i0.wp.com/exitosanoticias.pe/v1/wp-content/uploads/2020/04/restaurantes-1.png", "La Prata", "Brasil", 1400.00, 5.0));
+        benefits.add(Benefit("https://i0.wp.com/exitosanoticias.pe/v1/wp-content/uploads/2020/04/restaurantes-1.png", "Portuguesa de la Prata", "Colombia", 1000.00, 5.0));
+
+        benefitRecyclerView.layoutManager = LinearLayoutManager(context);
+        benefitRecyclerView.adapter = BenefitAdapterRecyclerView(benefits, context)
+
     }
 
 }
