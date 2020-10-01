@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">goingto</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="app_name">Going To</string>
+    <string name="title_activity_main">Going To</string>
     <string name="title_home">Home</string>
     <string name="title_points">Points</string>
     <string name="title_profile">Profile</string>
     <string name="title_challenges">Challengs</string>
-
+    <string name="title_place_detail">Place Detail</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
 </resources>

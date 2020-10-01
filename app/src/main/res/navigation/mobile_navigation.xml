@@ -9,7 +9,12 @@
         android:id="@+id/navigation_home"
         android:name="com.example.goingto.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_detail_place"
+
+            app:destination="@id/navigation_detail_place" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_points"
@@ -26,4 +31,9 @@
         android:name="com.example.goingto.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/profile_fragment" />
+    <fragment
+        android:id="@+id/navigation_detail_place"
+        android:name="com.example.goingto.ui.home.place_detail.PlaceDetailFragment"
+        android:label="@string/title_place_detail"
+        tools:layout="@layout/place_detail_fragment" />
 </navigation>
