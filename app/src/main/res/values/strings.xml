@@ -5,5 +5,10 @@
     <string name="title_points">Points</string>
     <string name="title_profile">Profile</string>
     <string name="title_challenges">Challengs</string>
+    <string name="gana_puntos_cumpliendo_retos">Gana puntos cumpliendo retos!</string>
+    <string name="los_retos_de_hoy">¡ Los Retos de Hoy !</string>
+    <string name="nombre_del_reto">Nombre del Reto</string>
+    <string name="descripcion_del_reto">Descripcion del Reto</string>
+    <string name="points">Points</string>
 
 </resources>

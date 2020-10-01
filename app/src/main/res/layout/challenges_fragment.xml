@@ -16,7 +16,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/titleToolbar"
-            android:text="¡ Los Retos de Hoy !"/>
+            android:text="@string/los_retos_de_hoy"/>
     </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/tvTitleChallenges"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/gana_puntos_cumpliendo_retos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/challengs_toolbar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvChallenges"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleChallenges" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
