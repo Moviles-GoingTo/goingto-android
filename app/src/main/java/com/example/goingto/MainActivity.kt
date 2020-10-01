@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var active: Fragment
     private lateinit var homeFragment: Fragment
     private lateinit var pointsFragment: Fragment
-    private lateinit var challengsFragment: Fragment
+    private lateinit var challengesFragment: Fragment
     private lateinit var profileFragment: Fragment
     private val fm = supportFragmentManager
     private val mOnNavigationItemSelectedListener =
@@ -38,8 +38,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.navigation_challenges -> {
 
-                    fm.beginTransaction().hide(active).show(challengsFragment).commit()
-                    active = challengsFragment
+                    fm.beginTransaction().hide(active).show(challengesFragment).commit()
+                    active = challengesFragment
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_profile -> {
@@ -76,15 +76,15 @@ class MainActivity : AppCompatActivity() {
     private fun setUpFragments() {
         homeFragment = HomeFragment()
         pointsFragment = PointsFragment()
-        challengsFragment = ChallengesFragment()
+        challengesFragment = ChallengesFragment()
         profileFragment = ProfileFragment()
         //fragment que se vera primero
         active = HomeFragment()
 
         fm.beginTransaction().add(R.id.container, profileFragment, "4").hide(profileFragment)
             .commit()
-        fm.beginTransaction().add(R.id.container, challengsFragment, "3")
-            .hide(challengsFragment).commit()
+        fm.beginTransaction().add(R.id.container, challengesFragment, "3")
+            .hide(challengesFragment).commit()
         fm.beginTransaction().add(R.id.container, pointsFragment, "2").hide(pointsFragment)
             .commit()
         fm.beginTransaction().add(R.id.container, homeFragment, "1").commit()

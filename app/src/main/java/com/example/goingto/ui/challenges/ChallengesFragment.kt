@@ -12,6 +12,7 @@ import com.example.goingto.R
 import com.example.goingto.adapter.BenefitAdapterRecyclerView
 import com.example.goingto.adapter.ChallengAdapterRecyclerView
 import com.example.goingto.model.Challeng
+import kotlinx.android.synthetic.main.challenges_fragment.*
 
 class ChallengesFragment : Fragment() {
 
@@ -20,7 +21,7 @@ class ChallengesFragment : Fragment() {
     }
 
     private lateinit var viewModel: ChallengesViewModel
-    private lateinit var challengRecycleView: RecyclerView
+    private lateinit var challengRecyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +33,7 @@ class ChallengesFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(ChallengesViewModel::class.java)
+        challengRecyclerView = rvChallenges
         loadChalleng(this)
     }
 
@@ -43,8 +45,8 @@ class ChallengesFragment : Fragment() {
         challenges.add(Challeng("Visitar Latinoamerica","Conoce las ciudades mas importantes de America del Sur",200.0))
         challenges.add(Challeng("Visitar Latinoamerica","Conoce las ciudades mas importantes de America del Sur",200.0))
 
-        challengRecycleView.layoutManager = LinearLayoutManager(context);
-        challengRecycleView.adapter = ChallengAdapterRecyclerView(challenges,context)
+        challengRecyclerView.layoutManager = LinearLayoutManager(context);
+        challengRecyclerView.adapter = ChallengAdapterRecyclerView(challenges,context)
     }
 
 }
