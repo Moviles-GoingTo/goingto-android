@@ -1,9 +1,13 @@
 package com.example.goingto
 
 import android.os.Bundle
+import android.view.MenuItem
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.findFragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -12,6 +16,7 @@ import com.example.goingto.ui.challenges.ChallengesFragment
 import com.example.goingto.ui.home.HomeFragment
 import com.example.goingto.ui.points.PointsFragment
 import com.example.goingto.ui.profile.ProfileFragment
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,36 +26,32 @@ class MainActivity : AppCompatActivity() {
     private lateinit var challengsFragment: Fragment
     private lateinit var profileFragment: Fragment
     private val fm = supportFragmentManager
-    private val mOnNavigationItemSelectedListener =
+   /* private val mOnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_home -> {
-
-                    fm.beginTransaction().hide(active).show(homeFragment).commit()
-                    active = homeFragment
+                    main_toolbar.isVisible = false
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_points -> {
+                    main_toolbar.isVisible = true
 
-                    fm.beginTransaction().hide(active).show(pointsFragment).commit()
-                    active = pointsFragment
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_challenges -> {
+                    main_toolbar.isVisible = true
 
-                    fm.beginTransaction().hide(active).show(challengsFragment).commit()
-                    active = challengsFragment
+
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_profile -> {
+                    main_toolbar.isVisible = true
 
-                    fm.beginTransaction().hide(active).show(profileFragment).commit()
-                    active = profileFragment
                     return@OnNavigationItemSelectedListener true
                 }
             }
             false
-        }
+        }*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,15 +63,16 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_points, R.id.navigation_challenges,
+                R.id.navigation_home,R.id.navigation_points, R.id.navigation_challenges,
                 R.id.navigation_profile
             )
         )
-        supportActionBar?.hide()
-        //setupActionBarWithNavController(navController, appBarConfiguration)
+        //supportActionBar?.hide()
+        setupActionBarWithNavController(navController,appBarConfiguration)
         navView.setupWithNavController(navController)
-        setUpFragments()
-        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+        //setUpFragments()
+        //navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 
     private fun setUpFragments() {
@@ -81,13 +83,21 @@ class MainActivity : AppCompatActivity() {
         //fragment que se vera primero
         active = HomeFragment()
 
-        fm.beginTransaction().add(R.id.container, profileFragment, "4").hide(profileFragment)
+        fm.beginTransaction().add(R.id.nav_host_fragment, profileFragment, "4")
+            .hide(profileFragment)
             .commit()
-        fm.beginTransaction().add(R.id.container, challengsFragment, "3")
+        fm.beginTransaction().add(R.id.nav_host_fragment, challengsFragment, "3")
             .hide(challengsFragment).commit()
-        fm.beginTransaction().add(R.id.container, pointsFragment, "2").hide(pointsFragment)
+        fm.beginTransaction().add(R.id.nav_host_fragment, pointsFragment, "2").hide(pointsFragment)
             .commit()
-        fm.beginTransaction().add(R.id.container, homeFragment, "1").commit()
+        fm.beginTransaction().add(R.id.nav_host_fragment, homeFragment, "1").commit()
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            android.R.id.home -> findNavController(R.id.nav_host_fragment).popBackStack()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
