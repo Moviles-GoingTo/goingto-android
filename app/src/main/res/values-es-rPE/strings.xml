@@ -7,7 +7,8 @@
     <string name="title_profile">Mi Perfil</string>
     <string name="title_challenges">Retos</string>
     <string name="title_place_detail">Detalle del lugar</string>
-
+    <string name="title_activity_register">Registro</string>
+    <string name="title_activity_card_save">Add card</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
     <string name="fondo">fondo</string>
 </resources>

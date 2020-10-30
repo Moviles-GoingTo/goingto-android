@@ -13,10 +13,14 @@
         android:supportsRtl="true"
 
         android:theme="@style/AppTheme">
+        <activity android:name=".CardSaveActivity" android:label="@string/title_activity_card_save"></activity>
+        <activity android:name=".MainActivity" android:label="@string/title_activity_main"/>
+        <activity android:name=".RegisterActivity" android:label="@string/title_activity_register"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_main"
             android:screenOrientation="portrait"
-            android:label="@string/title_activity_main">
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
