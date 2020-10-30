@@ -6,6 +6,10 @@
     <string name="title_profile">Profile</string>
     <string name="title_challenges">Challengs</string>
     <string name="title_place_detail">Place Detail</string>
+    <string name="title_activity_register">Register</string>
+    <string name="title_activity_card_save">Añadir tarjeta</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
     <string name="fondo">fondo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
