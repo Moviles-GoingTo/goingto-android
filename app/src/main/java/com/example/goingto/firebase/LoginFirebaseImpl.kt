@@ -163,13 +163,18 @@ class LoginFirebaseImpl(firebaseAuth: FirebaseAuth, activity: LoginActivity) :
             override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
                 showLoadingLogin(false)
                 if (response.isSuccessful){
-                    val result = firebaseAuth!!.createUserWithEmailAndPassword(email, password)
-                    if (result.isSuccessful) {
-                        firebaseAuth!!.signInWithEmailAndPassword(email, password)
+                    val resultLogin = firebaseAuth!!.signInWithEmailAndPassword(email, password)
+                    if (resultLogin.isSuccessful){
                         goMainScreen()
-                    } else {
-                        Toast.makeText(mActivity, "Ha Ocurrido un Error!.Intentelo nuevamente.", Toast.LENGTH_SHORT)
-                            .show()
+                    }else{
+                        val result = firebaseAuth!!.createUserWithEmailAndPassword(email, password)
+                        if (result.isSuccessful) {
+                            firebaseAuth!!.signInWithEmailAndPassword(email, password)
+                            goMainScreen()
+                        } else {
+                            Toast.makeText(mActivity, "Ha Ocurrido un Error!.Intentelo nuevamente.", Toast.LENGTH_SHORT)
+                                .show()
+                        }
                     }
                 }else{
                     Toast.makeText(mActivity,"Ha ocurrido un error al iniciar sesion.",Toast.LENGTH_LONG).show()
