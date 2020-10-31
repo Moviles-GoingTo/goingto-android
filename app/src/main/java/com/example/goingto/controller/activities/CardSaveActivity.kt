@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import com.example.goingto.R
 import kotlinx.android.synthetic.main.activity_card_save.*
 import kotlinx.android.synthetic.main.activity_card_save.btSave
@@ -13,7 +14,7 @@ class CardSaveActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_card_save)
-
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val name: String? = intent.getSerializableExtra("Name") as String?
         val surname: String? = intent.getSerializableExtra("Surname") as String?
         val birthdate: String? = intent.getSerializableExtra("Birthdate") as String?
@@ -57,5 +58,11 @@ class CardSaveActivity : AppCompatActivity() {
             registerActivity.putExtra("CardHolder", cardHolderToSend)
             startActivity(registerActivity)
         }
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            android.R.id.home -> finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
