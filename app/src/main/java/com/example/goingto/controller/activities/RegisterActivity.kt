@@ -172,21 +172,7 @@ class RegisterActivity : AppCompatActivity() {
         userService = retrofit.create(UserService::class.java)
 
         val user = User(null, email, password, null, null)
-        val response = userService.authenticate(user).enqueue(object : Callback<User> {
-            override fun onFailure(call: Call<User>, t: Throwable) {
-                Log.d("Activity Fail", "Error: " + t.toString())
-            }
 
-            override fun onResponse(
-                call: Call<User>,
-                response: Response<User>
-            ) {
-                if (response.isSuccessful) {
-                    println("authenticateUser")
-                    userId = response.body()!!.id!!
-                }
-            }
-        })
         return userId
     }
 

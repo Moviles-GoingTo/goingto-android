@@ -42,7 +42,12 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
 
     private fun ui() {
         login_button.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            val email = etLoginEmail.text.toString()
+            val password = etLoginPassword.text.toString()
+            if (email.isNotEmpty() && password.isNotEmpty()){
+                mLogin?.loginWithEmail(email,password)
+            }
+
         }
         tvRegister.setOnClickListener {
             val intento = Intent(this, RegisterActivity::class.java)

@@ -11,6 +11,10 @@ import com.example.goingto.controller.activities.LoginActivity
 
 import com.example.goingto.R
 import com.example.goingto.controller.activities.MainActivity
+import com.example.goingto.model.User
+import com.example.goingto.model.UserLogin
+import com.example.goingto.model.UserResponse
+import com.example.goingto.network.ReferenceService
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -28,6 +32,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.android.synthetic.main.loading_dialog.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class LoginFirebaseImpl(firebaseAuth: FirebaseAuth, activity: LoginActivity) :
@@ -147,7 +154,38 @@ class LoginFirebaseImpl(firebaseAuth: FirebaseAuth, activity: LoginActivity) :
     override fun onConnectionFailed(p0: ConnectionResult) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+    override fun loginWithEmail(email: String, password: String) {
+        showLoadingLogin(true)
+        val apiAdapter = ReferenceService()
+        val apiService = apiAdapter.getClientService()
+        val call = apiService.authenticate(UserLogin(email,password))
+        call.enqueue(object : Callback<UserResponse> {
+            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+                showLoadingLogin(false)
+                if (response.isSuccessful){
+                    val result = firebaseAuth!!.createUserWithEmailAndPassword(email, password)
+                    if (result.isSuccessful) {
+                        firebaseAuth!!.signInWithEmailAndPassword(email, password)
+                        goMainScreen()
+                    } else {
+                        Toast.makeText(mActivity, "Ha Ocurrido un Error!.Intentelo nuevamente.", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }else{
+                    Toast.makeText(mActivity,"Ha ocurrido un error al iniciar sesion.",Toast.LENGTH_LONG).show()
+                }
+            }
 
+            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                showLoadingLogin(false)
+                Toast.makeText(mActivity,"Ha ocurrido un error al iniciar sesion.",Toast.LENGTH_LONG).show()
+                t.stackTrace
+            }
+
+        })
+
+
+    }
     override fun loginWithGoogle(signInAccount: GoogleSignInAccount) {
         showLoadingLogin(true)
         val credential = GoogleAuthProvider.getCredential(signInAccount.idToken, null)

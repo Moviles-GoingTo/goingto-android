@@ -83,18 +83,17 @@
         android:text="Cambiar Contraseña"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/btFacebook"
+        app:layout_constraintBottom_toTopOf="@+id/btUpdateCard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btFacebook"
+        android:id="@+id/btUpdateCard"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
         android:layout_marginEnd="81dp"
         android:layout_marginBottom="70dp"
-        android:backgroundTint="@android:color/transparent"
         android:text="Actualizar Tarjeta de Crédito"
         android:textAllCaps="false"
         android:textStyle="normal"
@@ -111,7 +110,18 @@
         android:text="Perú"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvGoingToName" />
-
+    <Button
+        android:id="@+id/button_close_sesion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.6"
+        android:layout_marginBottom="20dp"
+        android:text="Cerrar Sesion"
+        android:textAllCaps="false"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"

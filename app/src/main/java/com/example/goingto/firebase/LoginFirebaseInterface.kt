@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuth
 interface LoginFirebaseInterface {
 
     fun loginWithGoogle(signInAccount: GoogleSignInAccount)
+    fun loginWithEmail(email:String,password:String)
     fun getFirebaseAuthListener():FirebaseAuth.AuthStateListener?
     fun getCallBackManager():CallbackManager?
     fun getGoogleApiClient():GoogleApiClient?
