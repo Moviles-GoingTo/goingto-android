@@ -29,6 +29,11 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+        ui(applicationContext)
+    }
+
+    private fun ui(applicationContext: Context) {
+        // get extra values
         val name: String? = intent.getSerializableExtra("Name") as String?
         val surname: String? = intent.getSerializableExtra("Surname") as String?
         val birthdate: String? = intent.getSerializableExtra("Birthdate") as String?
@@ -39,6 +44,7 @@ class RegisterActivity : AppCompatActivity() {
         val cardCvv: String?  = intent.getSerializableExtra("CardCvv") as String?
         val cardHolder: String?  = intent.getSerializableExtra("CardHolder") as String?
 
+        // set extra values to input texts
         etName.setText(name)
         etSurname.setText(surname)
         etBirthdate.setText(birthdate)
@@ -46,6 +52,7 @@ class RegisterActivity : AppCompatActivity() {
         etPassword.setText(password)
         tvCardNumber.text = cardNumber
 
+        // set listeners
         etBirthdate.setOnClickListener {
             showDatePickerDialog()
         }
@@ -100,6 +107,35 @@ class RegisterActivity : AppCompatActivity() {
         println("saveUserProfile")
     }
 
+    private fun saveUser(context: Context) {
+        val email = etEmail.text.toString()
+        val password = etPassword.text.toString()
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://api-goingto.azurewebsites.net/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val userService: UserService
+        userService = retrofit.create(UserService::class.java)
+
+        val user = User(null, email, password, null, null)
+        val response = userService.saveUser(user).enqueue(object : Callback<User> {
+            override fun onFailure(call: Call<User>, t: Throwable) {
+                Log.d("Activity Fail", "Error: " + t.toString())
+            }
+
+            override fun onResponse(
+                call: Call<User>,
+                response: Response<User>
+            ) {
+                if (response.isSuccessful) {
+                    println("user saved")
+                }
+            }
+        })
+    }
+
     private fun getSavedUserId(): Int {
         val email = etEmail.text.toString()
         val password = etPassword.text.toString()
@@ -130,35 +166,6 @@ class RegisterActivity : AppCompatActivity() {
             }
         })
         return userId
-    }
-
-    private fun saveUser(context: Context) {
-        val email = etEmail.text.toString()
-        val password = etPassword.text.toString()
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://api-goingto.azurewebsites.net/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val userService: UserService
-        userService = retrofit.create(UserService::class.java)
-
-        val user = User(null, email, password, null, null)
-        val response = userService.saveUser(user).enqueue(object : Callback<User> {
-            override fun onFailure(call: Call<User>, t: Throwable) {
-                Log.d("Activity Fail", "Error: " + t.toString())
-            }
-
-            override fun onResponse(
-                call: Call<User>,
-                response: Response<User>
-            ) {
-                if (response.isSuccessful) {
-                    println("user saved")
-                }
-            }
-        })
     }
 
     private fun showDatePickerDialog() {
