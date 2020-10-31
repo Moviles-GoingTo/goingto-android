@@ -1,12 +1,14 @@
 package com.example.goingto.network
 
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
+import com.example.goingto.model.User
+import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface UserService {
-    @POST("/api/Users")
-    @FormUrlEncoded
-    fun saveUser(@Field("email") email: String,
-                @Field("password") password: String)
+    @POST("api/Users")
+    fun saveUser(@Body user: User): Call<User>
+
+    @POST("api/Users/authenticate")
+    fun authenticate(@Body user: User): Call<User>
 }

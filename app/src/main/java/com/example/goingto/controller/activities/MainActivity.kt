@@ -1,22 +1,19 @@
-package com.example.goingto
+package com.example.goingto.controller.activities
 
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.findFragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.goingto.R
 import com.example.goingto.ui.challenges.ChallengesFragment
 import com.example.goingto.ui.home.HomeFragment
 import com.example.goingto.ui.points.PointsFragment
 import com.example.goingto.ui.profile.ProfileFragment
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -63,7 +60,9 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home,R.id.navigation_points, R.id.navigation_challenges,
+                R.id.navigation_home,
+                R.id.navigation_points,
+                R.id.navigation_challenges,
                 R.id.navigation_profile
             )
         )
