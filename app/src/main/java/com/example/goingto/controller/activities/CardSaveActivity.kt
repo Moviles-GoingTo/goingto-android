@@ -1,6 +1,8 @@
 package com.example.goingto.controller.activities
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.goingto.R
@@ -33,6 +35,15 @@ class CardSaveActivity : AppCompatActivity() {
             val cardEndDateToSend = etCardEndDate.text.toString()
             val cardCvvToSend = etCardCvv.text.toString()
             val cardHolderToSend = etCardHolder.text.toString()
+
+            val sharedPreferences: SharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+            val editor: SharedPreferences.Editor = sharedPreferences.edit()
+            editor.apply{
+                putString("cardNumber", cardNumberToSend)
+                putString("cardEndDate", cardEndDateToSend)
+                putString("cardCvv", cardCvvToSend)
+                putString("cardHolder", cardHolderToSend)
+            }.apply()
 
             val registerActivity = Intent(applicationContext, RegisterActivity::class.java)
             registerActivity.putExtra("Name", name)
