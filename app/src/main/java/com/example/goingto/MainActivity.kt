@@ -1,8 +1,11 @@
 package com.example.goingto
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -16,9 +19,15 @@ import com.example.goingto.ui.challenges.ChallengesFragment
 import com.example.goingto.ui.home.HomeFragment
 import com.example.goingto.ui.points.PointsFragment
 import com.example.goingto.ui.profile.ProfileFragment
+import com.facebook.login.LoginManager
+import com.google.android.gms.auth.api.Auth
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.ConnectionResult
+import com.google.android.gms.common.api.GoogleApiClient
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),GoogleApiClient.OnConnectionFailedListener,ProfileFragment.LogoutMethod  {
 
     private lateinit var active: Fragment
     private lateinit var homeFragment: Fragment
@@ -26,6 +35,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var challengsFragment: Fragment
     private lateinit var profileFragment: Fragment
     private val fm = supportFragmentManager
+    private var googleApiClient: GoogleApiClient? = null
+
+    private var firebaseAuth: FirebaseAuth? = null
+    private var firebaseAuthListener: FirebaseAuth.AuthStateListener? = null
    /* private val mOnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
@@ -57,7 +70,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestEmail()
+            .build()
 
+        googleApiClient = GoogleApiClient.Builder(this)
+            .enableAutoManage(this, this)
+            .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+            .build()
+
+        firebaseAuth = FirebaseAuth.getInstance()
+        firebaseAuthListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
+            val user = firebaseAuth.currentUser
+            if (user != null) {
+                //setUserData(user)
+            } else {
+                goLogInScreen()
+            }
+        }
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -99,5 +129,45 @@ class MainActivity : AppCompatActivity() {
             android.R.id.home -> findNavController(R.id.nav_host_fragment).popBackStack()
         }
         return super.onOptionsItemSelected(item)
+    }
+    private fun logOut() {
+        firebaseAuth!!.signOut()
+        LoginManager.getInstance().logOut()
+        Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback {
+            if (it.isSuccess) {
+                goLogInScreen()
+            } else {
+                Toast.makeText(
+                    applicationContext,
+                    R.string.not_close_session, Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+        goLogInScreen()
+
+    }
+
+
+    private fun goLogInScreen() {
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+    }
+    override fun showLogOutConfirmationDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("Cerrar Sesion?")
+        builder.setPositiveButton("Si") { dialog, which ->
+            logOut()
+        }
+        builder.setNegativeButton("No") { dialog, which ->
+            dialog?.dismiss()
+        }
+        // Create and show the AlertDialog
+        val alertDialog = builder.create()
+        alertDialog.show()
+    }
+
+    override fun onConnectionFailed(p0: ConnectionResult) {
+        TODO("Not yet implemented")
     }
 }
