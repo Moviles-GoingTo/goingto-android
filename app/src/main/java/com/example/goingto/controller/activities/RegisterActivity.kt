@@ -3,6 +3,7 @@ package com.example.goingto.controller.activities
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -32,6 +33,7 @@ class RegisterActivity : AppCompatActivity() {
         ui(applicationContext)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun ui(applicationContext: Context) {
         // get extra values
         val name: String? = intent.getSerializableExtra("Name") as String?
@@ -96,6 +98,7 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun saveUserProfile(userId: Int) {
         val name = etName.text.toString()
         val surname = etSurname.text.toString()
@@ -105,6 +108,16 @@ class RegisterActivity : AppCompatActivity() {
         val createdAt = LocalDateTime.now().toString()
 
         println("saveUserProfile")
+        val sharedPreferences: SharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = sharedPreferences.edit()
+        editor.apply{
+            putString("name", name)
+            putString("surname", surname)
+            putString("birthdate", birthdate)
+            putString("gender", gender)
+            putInt("countryId", countryId)
+            putString("createdAt", createdAt)
+        }.apply()
     }
 
     private fun saveUser(context: Context) {
