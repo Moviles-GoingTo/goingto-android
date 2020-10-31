@@ -4,6 +4,10 @@
     package="com.example.goingto">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".CardSaveActivity" android:label="@string/title_activity_card_save"></activity>
-        <activity android:name=".MainActivity" android:label="@string/title_activity_main"/>
+        <activity android:name=".controller.activities.MainActivity" android:label="@string/title_activity_main"/>
         <activity android:name=".RegisterActivity" android:label="@string/title_activity_register"/>
         <activity
             android:name=".LoginActivity"
