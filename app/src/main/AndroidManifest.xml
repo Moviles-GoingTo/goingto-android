@@ -12,11 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CardSaveActivity" android:label="@string/title_activity_card_save"></activity>
-        <activity android:name=".MainActivity" android:label="@string/title_activity_main"/>
-        <activity android:name=".RegisterActivity" android:label="@string/title_activity_register"/>
+        <activity android:name=".controller.activities.CardSaveActivity" android:label="@string/title_activity_card_save"></activity>
+        <activity android:name=".controller.activities.MainActivity" android:label="@string/title_activity_main"/>
+        <activity android:name=".controller.activities.RegisterActivity" android:label="@string/title_activity_register"/>
         <activity
-            android:name=".LoginActivity"
+            android:name=".controller.activities.LoginActivity"
             android:label="@string/title_activity_main"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
