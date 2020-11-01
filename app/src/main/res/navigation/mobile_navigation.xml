@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.goingto.ui.home.HomeFragment"
+        android:name="com.marc.oliva.goingto.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -18,22 +18,22 @@
 
     <fragment
         android:id="@+id/navigation_points"
-        android:name="com.example.goingto.ui.points.PointsFragment"
+        android:name="com.marc.oliva.goingto.ui.points.PointsFragment"
         android:label="@string/title_points"
         tools:layout="@layout/points_fragment" />
     <fragment
         android:id="@+id/navigation_challenges"
-        android:name="com.example.goingto.ui.challenges.ChallengesFragment"
+        android:name="com.marc.oliva.goingto.ui.challenges.ChallengesFragment"
         android:label="@string/title_challenges"
         tools:layout="@layout/challenges_fragment" />
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.goingto.ui.profile.ProfileFragment"
+        android:name="com.marc.oliva.goingto.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/profile_fragment" />
     <fragment
         android:id="@+id/navigation_detail_place"
-        android:name="com.example.goingto.ui.home.place_detail.PlaceDetailFragment"
+        android:name="com.marc.oliva.goingto.ui.home.place_detail.PlaceDetailFragment"
         android:label="@string/title_place_detail"
         tools:layout="@layout/place_detail_fragment" />
 </navigation>
