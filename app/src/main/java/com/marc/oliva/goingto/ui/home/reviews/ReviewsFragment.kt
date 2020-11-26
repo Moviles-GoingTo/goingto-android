@@ -31,12 +31,12 @@ class ReviewsFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(ReviewsViewModel::class.java)
         val reviews = ArrayList<Review>()
-        reviews.add(Review("Marc Oliva","des",""))
-        reviews.add(Review("Marc Oliva","des",""))
-        reviews.add(Review("Marc Oliva","des",""))
-        reviews.add(Review("Marc Oliva","des",""))
-        reviews.add(Review("Marc Oliva","des",""))
-        reviews.add(Review("Marc Oliva","des",""))
+        reviews.add(Review("Juan Esbozo","Bonito lugar para visitar",""))
+        reviews.add(Review("Sergio Lara","Fui con la familia y pasamos un maravilloso momento",""))
+        reviews.add(Review("Vanessa Tucuman","Paz, calma y tranquilidad...",""))
+        reviews.add(Review("David Quevedo","A este lugar no le falta nada",""))
+        reviews.add(Review("Sebastian Cornejo","Hace mucho frío, pero hermosos paisajes",""))
+        reviews.add(Review("Silvia Guevara","Excelente lugar para ir de vacaciones",""))
         val reviewsAdapter = ReviewsAdapterRecyclerView(reviews)
         reviews_recyclerview.adapter= reviewsAdapter
     }

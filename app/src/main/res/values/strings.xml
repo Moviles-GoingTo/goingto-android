@@ -8,7 +8,7 @@
     <string name="title_place_detail">Place Detail</string>
     <string name="title_activity_register">Register</string>
     <string name="title_activity_card_save">Añadir tarjeta</string>
-    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
+    <string name="lorem_ipsum">El Santuario Histórico de Machu Picchu es el destino turístico más visitado de Perú y de América</string>
     <string name="fondo">fondo</string>
     <string name="facebook_app_id">390951918699995</string>
     <string name="fb_login_protocol_scheme">fb390951918699995</string>
@@ -18,4 +18,9 @@
     <string name="not_log_in">No se pudo iniciar sesión</string>
     <string name="log_out">Log Out</string>
     <string name="revoke">Revoke</string>
+    <string name="gana_puntos_cumpliendo_retos">Gana puntos cumpliendo retos!</string>
+    <string name="los_retos_de_hoy">¡ Los Retos de Hoy !</string>
+    <string name="nombre_del_reto">Nombre del Reto</string>
+    <string name="descripcion_del_reto">Descripcion del Reto</string>
+    <string name="points">Points</string>
 </resources>

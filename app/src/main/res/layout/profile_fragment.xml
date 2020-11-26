@@ -60,7 +60,7 @@
 
 
     <TextView
-        android:id="@+id/tvGoingToName"
+        android:id="@+id/tvBirthdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
@@ -109,7 +109,7 @@
         android:layout_marginTop="12dp"
         android:text="Perú"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvGoingToName" />
+        app:layout_constraintTop_toBottomOf="@+id/tvBirthdate" />
     <Button
         android:id="@+id/button_close_sesion"
         android:layout_width="0dp"

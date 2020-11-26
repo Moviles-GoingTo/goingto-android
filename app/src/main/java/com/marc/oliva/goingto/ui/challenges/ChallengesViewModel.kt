@@ -1,4 +1,4 @@
-package com.example.goingto.ui.challenges
+package com.marc.oliva.goingto.ui.challenges
 
 import androidx.lifecycle.ViewModel
 

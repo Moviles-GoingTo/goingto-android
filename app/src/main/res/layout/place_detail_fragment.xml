@@ -11,7 +11,7 @@
         android:id="@+id/name_place"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Lugar Uno"
+        android:text="Machu PIcchu"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="22sp"
         app:layout_constraintLeft_toLeftOf="parent"

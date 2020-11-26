@@ -31,11 +31,11 @@ class TipsFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(TipsViewModel::class.java)
         val tips = ArrayList<Tip>()
-        tips.add(Tip(resources.getString(R.string.lorem_ipsum)))
-        tips.add(Tip(resources.getString(R.string.lorem_ipsum)))
-        tips.add(Tip(resources.getString(R.string.lorem_ipsum)))
-        tips.add(Tip(resources.getString(R.string.lorem_ipsum)))
-        tips.add(Tip(resources.getString(R.string.lorem_ipsum)))
+        tips.add(Tip("Lleva paraguas siempre en este lugar"))
+        tips.add(Tip("No es necesario estar pendiente de tus pertenencias todo el tiempo"))
+        tips.add(Tip("Si eres extranjero, revisa bien los precios"))
+        tips.add(Tip("Si vas a viaje en avión desde Lima, pide un asiento a la derecha"))
+        tips.add(Tip("Procura llevar siempre dos jerseys por si una se ensucia demasiado"))
         val tipAdapter = TipAdapterRecyclerView(tips)
         tips_recyclerview.adapter = tipAdapter
 

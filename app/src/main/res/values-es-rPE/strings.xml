@@ -19,4 +19,9 @@
     <string name="not_log_in">No se pudo iniciar sesión</string>
     <string name="log_out">Log Out</string>
     <string name="revoke">Revoke</string>
+    <string name="nombre_del_reto">Nombre del Reto</string>
+    <string name="descripcion_del_reto">Descripcion del Reto</string>
+    <string name="points">Points</string>
+    <string name="gana_puntos_cumpliendo_retos">Gana puntos cumpliendo retos!</string>
+    <string name="los_retos_de_hoy">¡ Los Retos de Hoy !</string>
 </resources>
